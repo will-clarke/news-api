@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  description: |
+    ## An API that lets customers interact with Links and articles
+    This should be a better chunk of documentation TBH :)
+  title: Articles API
+  version: 1.0.0
+servers:
+- url: http://example.com
+paths:
+  /articles:
+    get:
+      description: |
+        Returns all articles
+      operationId: getArticles
+      parameters:
+      - description: feeds to filter by
+        explode: true
+        in: query
+        name: feeds
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: categories to filter by
+        explode: true
+        in: query
+        name: categories
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Article'
+                type: array
+          description: articles response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+    post:
+      description: Creates a new article in the store. Duplicates are allowed
+      operationId: post article
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewArticle'
+        description: Article to add to the store
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: article response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+  /articles/{id}:
+    delete:
+      description: deletes a single article based on the ID supplied
+      operationId: deleteArticle
+      parameters:
+      - description: ID of article to delete
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: article deleted
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+    get:
+      description: Returns an article based on a single ID, if the user does not have
+        access to the article
+      operationId: get article
+      parameters:
+      - description: ID of article to fetch
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: article response
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: unexpected error
+components:
+  schemas:
+    Article:
+      allOf:
+      - $ref: '#/components/schemas/NewArticle'
+      - $ref: '#/components/schemas/Article_allOf'
+    NewArticle:
+      example:
+        feed: feed
+        categories:
+        - categories
+        - categories
+        publishedDate: publishedDate
+        url: url
+      properties:
+        url:
+          type: string
+        categories:
+          items:
+            type: string
+          type: array
+        feed:
+          type: string
+        publishedDate:
+          type: string
+      required:
+      - url
+      type: object
+    Error:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    Article_allOf:
+      properties:
+        id:
+          format: int64
+          type: integer
+      required:
+      - id
+      type: object

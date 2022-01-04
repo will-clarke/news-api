@@ -1,8 +1,3 @@
-// This is an example of implementing the Pet Store from the OpenAPI documentation
-// found at:
-// https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.0/petstore.yaml
-//
-// The code under api/petstore/ has been generated from that specification.
 package main
 
 import (
@@ -10,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/deepmap/oapi-codegen/examples/petstore-expanded/echo/api"
+	"git.sr.ht/~will-clarke/news-api/article"
 	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
@@ -20,7 +15,7 @@ func main() {
 	var port = flag.Int("port", 8080, "Port for test HTTP server")
 	flag.Parse()
 
-	swagger, err := api.GetSwagger()
+	swagger, err := article.GetSwagger()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error loading swagger spec\n: %s", err)
 		os.Exit(1)
@@ -31,7 +26,7 @@ func main() {
 	swagger.Servers = nil
 
 	// Create an instance of our handler which satisfies the generated interface
-	petStore := api.NewPetStore()
+	articleStore := NewArticleStore()
 
 	// This is how you set up a basic Echo router
 	e := echo.New()
@@ -41,8 +36,8 @@ func main() {
 	// OpenAPI schema.
 	e.Use(middleware.OapiRequestValidator(swagger))
 
-	// We now register our petStore above as the handler for the interface
-	api.RegisterHandlers(e, petStore)
+	// We now register our articleStore above as the handler for the interface
+	article.RegisterHandlers(e, articleStore)
 
 	// And we serve HTTP until the world ends.
 	e.Logger.Fatal(e.Start(fmt.Sprintf("0.0.0.0:%d", *port)))
