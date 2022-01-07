@@ -6,6 +6,8 @@ import (
 	"os"
 
 	"git.sr.ht/~will-clarke/news-api/article"
+	"git.sr.ht/~will-clarke/news-api/feed"
+	"git.sr.ht/~will-clarke/news-api/store"
 	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
 	echomiddleware "github.com/labstack/echo/v4/middleware"
@@ -25,9 +27,6 @@ func main() {
 	// that server names match. We don't know how this thing will be run.
 	swagger.Servers = nil
 
-	// Create an instance of our handler which satisfies the generated interface
-	articleStore := NewArticleStore()
-
 	// This is how you set up a basic Echo router
 	e := echo.New()
 	// Log all requests
@@ -36,8 +35,9 @@ func main() {
 	// OpenAPI schema.
 	e.Use(middleware.OapiRequestValidator(swagger))
 
-	// We now register our articleStore above as the handler for the interface
-	article.RegisterHandlers(e, articleStore)
+	// We now register our stores above as the handler for the interface
+	article.RegisterHandlers(e, store.NewArticleStore())
+	feed.RegisterHandlers(e, store.NewFeedStore())
 
 	// And we serve HTTP until the world ends.
 	e.Logger.Fatal(e.Start(fmt.Sprintf("0.0.0.0:%d", *port)))
