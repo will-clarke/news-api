@@ -20,7 +20,10 @@ type ArticleStore struct {
 }
 
 func NewArticleStore() *ArticleStore {
-	return &ArticleStore{}
+	return &ArticleStore{
+		articles:   make(map[int64]article.Article),
+		nextNumber: 1,
+	}
 }
 
 // (GET /articles)
