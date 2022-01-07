@@ -922,17 +922,17 @@ ul.nav-tabs {
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="addArticles" class="">
-                      <a href="#api-Default-addArticles">addArticles</a>
-                    </li>
                     <li data-group="Default" data-name="deleteArticle" class="">
                       <a href="#api-Default-deleteArticle">deleteArticle</a>
                     </li>
-                    <li data-group="Default" data-name="find article by id" class="">
-                      <a href="#api-Default-find article by id">find article by id</a>
+                    <li data-group="Default" data-name="get article" class="">
+                      <a href="#api-Default-get article">get article</a>
                     </li>
                     <li data-group="Default" data-name="getArticles" class="">
                       <a href="#api-Default-getArticles">getArticles</a>
+                    </li>
+                    <li data-group="Default" data-name="post article" class="">
+                      <a href="#api-Default-post article">post article</a>
                     </li>
           </ul>
         </nav>
@@ -959,434 +959,6 @@ ul.nav-tabs {
         <div id="sections">
                 <section id="api-Default">
                   <h1>Default</h1>
-                    <div id="api-Default-addArticles">
-                      <article id="api-Default-addArticles-0" data-group="User" data-name="addArticles" data-version="0">
-                        <div class="pull-left">
-                          <h1>addArticles</h1>
-                          <p></p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">Creates a new article in the store. Duplicates are allowed</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/articles</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-addArticles-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-addArticles-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-addArticles-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-addArticles-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-addArticles-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-addArticles-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-addArticles-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://example.com/articles" \
- -d '{
-  &quot;feed&quot; : &quot;feed&quot;,
-  &quot;categories&quot; : [ &quot;categories&quot;, &quot;categories&quot; ],
-  &quot;publishedDate&quot; : &quot;publishedDate&quot;,
-  &quot;url&quot; : &quot;url&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-addArticles-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-
-        // Create an instance of the API class
-        DefaultApi apiInstance = new DefaultApi();
-        NewArticle newArticle = ; // NewArticle | 
-
-        try {
-            Article result = apiInstance.addArticles(newArticle);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#addArticles");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-addArticles-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
-
-public class DefaultApiExample {
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        NewArticle newArticle = ; // NewArticle | 
-
-        try {
-            Article result = apiInstance.addArticles(newArticle);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#addArticles");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-addArticles-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-addArticles-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-
-// Create an instance of the API class
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-NewArticle *newArticle = ; // 
-
-[apiInstance addArticlesWith:newArticle
-              completionHandler: ^(Article output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-addArticles-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var ArticlesApi = require('articles_api');
-
-// Create an instance of the API class
-var api = new ArticlesApi.DefaultApi()
-var newArticle = ; // {NewArticle} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.addArticles(newArticle, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-addArticles-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-addArticles-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class addArticlesExample
-    {
-        public void main()
-        {
-
-            // Create an instance of the API class
-            var apiInstance = new DefaultApi();
-            var newArticle = new NewArticle(); // NewArticle | 
-
-            try {
-                Article result = apiInstance.addArticles(newArticle);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.addArticles: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-addArticles-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\DefaultApi();
-$newArticle = ; // NewArticle | 
-
-try {
-    $result = $api_instance->addArticles($newArticle);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->addArticles: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-addArticles-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::DefaultApi;
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
-my $newArticle = WWW::OPenAPIClient::Object::NewArticle->new(); # NewArticle | 
-
-eval {
-    my $result = $api_instance->addArticles(newArticle => $newArticle);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->addArticles: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-addArticles-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Create an instance of the API class
-api_instance = openapi_client.DefaultApi()
-newArticle =  # NewArticle | 
-
-try:
-    api_response = api_instance.add_articles(newArticle)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->addArticles: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-addArticles-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
-
-pub fn main() {
-    let newArticle = ; // NewArticle
-
-    let mut context = DefaultApi::Context::default();
-    let result = client.addArticles(newArticle, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">newArticle <span style="color:red;">*</span></td>
-<td>
-<p class="marked">Article to add to the store</p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "description" : "Article to add to the store",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/NewArticle"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_addArticles_newArticle');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_addArticles_newArticle"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Default-addArticles-title-200"></h3>
-                            <p id="examples-Default-addArticles-description-200" class="marked"></p>
-                            <script>
-                              var responseDefault200_description = `article response`;
-                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
-                              if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-addArticles-title-200").text("Status: 200 - " + responseDefault200_description);
-                              } else {
-                                $("#examples-Default-addArticles-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-addArticles-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-addArticles-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-addArticles-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-addArticles-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-addArticles-200-schema">
-                                  <div id="responses-Default-addArticles-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "article response",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/Article"
-      }
-    }
-  }
-};
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-addArticles-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-addArticles-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-Default-addArticles-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-Default-addArticles-title-default"></h3>
-                            <p id="examples-Default-addArticles-description-default" class="marked"></p>
-                            <script>
-                              var responseDefaultdefault_description = `unexpected error`;
-                              var responseDefaultdefault_description_break = responseDefaultdefault_description.indexOf('\n');
-                              if (responseDefaultdefault_description_break == -1) {
-                                $("#examples-Default-addArticles-title-default").text("Status: default - " + responseDefaultdefault_description);
-                              } else {
-                                $("#examples-Default-addArticles-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
-                                $("#examples-Default-addArticles-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Default-addArticles-default" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-addArticles-default-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Default-addArticles-default-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-addArticles-default-schema">
-                                  <div id="responses-Default-addArticles-schema-default" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "unexpected error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/Error"
-      }
-    }
-  }
-};
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-addArticles-default-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-addArticles-schema-default');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-Default-addArticles-default-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Default-deleteArticle">
                       <article id="api-Default-deleteArticle-0" data-group="User" data-name="deleteArticle" data-version="0">
                         <div class="pull-left">
@@ -1741,10 +1313,10 @@ ID of article to delete
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-find article by id">
-                      <article id="api-Default-find article by id-0" data-group="User" data-name="find article by id" data-version="0">
+                    <div id="api-Default-get article">
+                      <article id="api-Default-get article-0" data-group="User" data-name="get article" data-version="0">
                         <div class="pull-left">
-                          <h1>find article by id</h1>
+                          <h1>get article</h1>
                           <p></p>
                         </div>
                         <div class="pull-right"></div>
@@ -1758,28 +1330,28 @@ ID of article to delete
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-find article by id-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-find article by id-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-find article by id-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-find article by id-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-find article by id-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-find article by id-0-rust">Rust</a></li>
+                          <li class="active"><a href="#examples-Default-get article-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-get article-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-get article-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-get article-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-get article-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Default-get article-0-rust">Rust</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-find article by id-0-curl">
+                          <div class="tab-pane active" id="examples-Default-get article-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  -H "Accept: application/json" \
  "http://example.com/articles/{id}"
 </code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-find article by id-0-java">
+                          <div class="tab-pane" id="examples-Default-get article-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
@@ -1796,10 +1368,10 @@ public class DefaultApiExample {
         Long id = 789; // Long | ID of article to fetch
 
         try {
-            Article result = apiInstance.find article by id(id);
+            Article result = apiInstance.get article(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#find article by id");
+            System.err.println("Exception when calling DefaultApi#get article");
             e.printStackTrace();
         }
     }
@@ -1807,7 +1379,7 @@ public class DefaultApiExample {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-find article by id-0-android">
+                          <div class="tab-pane" id="examples-Default-get article-0-android">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -1816,27 +1388,27 @@ public class DefaultApiExample {
         Long id = 789; // Long | ID of article to fetch
 
         try {
-            Article result = apiInstance.find article by id(id);
+            Article result = apiInstance.get article(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#find article by id");
+            System.err.println("Exception when calling DefaultApi#get article");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-find article by id-0-groovy">
+  <div class="tab-pane" id="examples-Default-get article-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-find article by id-0-objc">
+                            <div class="tab-pane" id="examples-Default-get article-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">
 
 // Create an instance of the API class
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 Long *id = 789; // ID of article to fetch (default to null)
 
-[apiInstance find article by idWith:id
+[apiInstance get articleWith:id
               completionHandler: ^(Article output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -1848,7 +1420,7 @@ Long *id = 789; // ID of article to fetch (default to null)
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-find article by id-0-javascript">
+                            <div class="tab-pane" id="examples-Default-get article-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var ArticlesApi = require('articles_api');
 
 // Create an instance of the API class
@@ -1862,14 +1434,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.find article by id(id, callback);
+api.get article(id, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-find article by id-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-get article-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-find article by id-0-csharp">
+                            <div class="tab-pane" id="examples-Default-get article-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using Org.OpenAPITools.Api;
@@ -1878,7 +1450,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class find article by idExample
+    public class get articleExample
     {
         public void main()
         {
@@ -1888,10 +1460,10 @@ namespace Example
             var id = 789;  // Long | ID of article to fetch (default to null)
 
             try {
-                Article result = apiInstance.find article by id(id);
+                Article result = apiInstance.get article(id);
                 Debug.WriteLine(result);
             } catch (Exception e) {
-                Debug.Print("Exception when calling DefaultApi.find article by id: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.get article: " + e.Message );
             }
         }
     }
@@ -1899,7 +1471,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-find article by id-0-php">
+                            <div class="tab-pane" id="examples-Default-get article-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -1908,15 +1480,15 @@ $api_instance = new OpenAPITools\Client\Api\DefaultApi();
 $id = 789; // Long | ID of article to fetch
 
 try {
-    $result = $api_instance->find article by id($id);
+    $result = $api_instance->get article($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->find article by id: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->get article: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-find article by id-0-perl">
+                            <div class="tab-pane" id="examples-Default-get article-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::DefaultApi;
@@ -1926,15 +1498,15 @@ my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
 my $id = 789; # Long | ID of article to fetch
 
 eval {
-    my $result = $api_instance->find article by id(id => $id);
+    my $result = $api_instance->get article(id => $id);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->find article by id: $@\n";
+    warn "Exception when calling DefaultApi->get article: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-find article by id-0-python">
+                            <div class="tab-pane" id="examples-Default-get article-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import openapi_client
@@ -1946,20 +1518,20 @@ api_instance = openapi_client.DefaultApi()
 id = 789 # Long | ID of article to fetch (default to null)
 
 try:
-    api_response = api_instance.find_article_by_id(id)
+    api_response = api_instance.get_article(id)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->find article by id: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->get article: %s\n" % e)</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-find article by id-0-rust">
+                            <div class="tab-pane" id="examples-Default-get article-0-rust">
                               <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
 
 pub fn main() {
     let id = 789; // Long
 
     let mut context = DefaultApi::Context::default();
-    let result = client.find article by id(id, &context).wait();
+    let result = client.get article(id, &context).wait();
 
     println!("{:?}", result);
 }
@@ -1984,7 +1556,7 @@ pub fn main() {
 <td>
 
 
-    <div id="d2e199_find article by id_id">
+    <div id="d2e199_get article_id">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -2013,23 +1585,23 @@ ID of article to fetch
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-Default-find article by id-title-200"></h3>
-                            <p id="examples-Default-find article by id-description-200" class="marked"></p>
+                            <h3 id="examples-Default-get article-title-200"></h3>
+                            <p id="examples-Default-get article-description-200" class="marked"></p>
                             <script>
                               var responseDefault200_description = `article response`;
                               var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
                               if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-find article by id-title-200").text("Status: 200 - " + responseDefault200_description);
+                                $("#examples-Default-get article-title-200").text("Status: 200 - " + responseDefault200_description);
                               } else {
-                                $("#examples-Default-find article by id-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-find article by id-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
+                                $("#examples-Default-get article-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
+                                $("#examples-Default-get article-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-Default-find article by id-200" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-Default-get article-200" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-find article by id-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-Default-get article-200-schema">Schema</a>
                                 </li>
 
 
@@ -2038,9 +1610,9 @@ ID of article to fetch
                             </ul>
 
 
-                            <div class="tab-content" id="responses-Default-find article by id-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-find article by id-200-schema">
-                                  <div id="responses-Default-find article by id-schema-200" class="exampleStyle">
+                            <div class="tab-content" id="responses-Default-get article-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-get article-200-schema">
+                                  <div id="responses-Default-get article-schema-200" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -2069,33 +1641,33 @@ ID of article to fetch
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-find article by id-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-find article by id-schema-200');
+                                        $('#responses-Default-get article-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-get article-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-Default-find article by id-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-Default-get article-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-Default-find article by id-title-default"></h3>
-                            <p id="examples-Default-find article by id-description-default" class="marked"></p>
+                            <h3 id="examples-Default-get article-title-default"></h3>
+                            <p id="examples-Default-get article-description-default" class="marked"></p>
                             <script>
                               var responseDefaultdefault_description = `unexpected error`;
                               var responseDefaultdefault_description_break = responseDefaultdefault_description.indexOf('\n');
                               if (responseDefaultdefault_description_break == -1) {
-                                $("#examples-Default-find article by id-title-default").text("Status: default - " + responseDefaultdefault_description);
+                                $("#examples-Default-get article-title-default").text("Status: default - " + responseDefaultdefault_description);
                               } else {
-                                $("#examples-Default-find article by id-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
-                                $("#examples-Default-find article by id-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
+                                $("#examples-Default-get article-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
+                                $("#examples-Default-get article-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-Default-find article by id-default" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-Default-get article-default" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-find article by id-default-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-Default-get article-default-schema">Schema</a>
                                 </li>
 
 
@@ -2104,9 +1676,9 @@ ID of article to fetch
                             </ul>
 
 
-                            <div class="tab-content" id="responses-Default-find article by id-default-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-find article by id-default-schema">
-                                  <div id="responses-Default-find article by id-schema-default" class="exampleStyle">
+                            <div class="tab-content" id="responses-Default-get article-default-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-get article-default-schema">
+                                  <div id="responses-Default-get article-schema-default" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -2135,14 +1707,14 @@ ID of article to fetch
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-find article by id-default-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-find article by id-schema-default');
+                                        $('#responses-Default-get article-default-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-get article-schema-default');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-Default-find article by id-default-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-Default-get article-default-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
                         </article>
@@ -2580,6 +2152,434 @@ categories to filter by
                                     </script>
                                   </div>
                                   <input id='responses-Default-getArticles-default-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-post article">
+                      <article id="api-Default-post article-0" data-group="User" data-name="post article" data-version="0">
+                        <div class="pull-left">
+                          <h1>post article</h1>
+                          <p></p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Creates a new article in the store. Duplicates are allowed</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/articles</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-post article-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-post article-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-post article-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-post article-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-post article-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Default-post article-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-post article-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://example.com/articles" \
+ -d '{
+  &quot;feed&quot; : &quot;feed&quot;,
+  &quot;categories&quot; : [ &quot;categories&quot;, &quot;categories&quot; ],
+  &quot;publishedDate&quot; : &quot;publishedDate&quot;,
+  &quot;url&quot; : &quot;url&quot;
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-post article-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+    public static void main(String[] args) {
+
+        // Create an instance of the API class
+        DefaultApi apiInstance = new DefaultApi();
+        NewArticle newArticle = ; // NewArticle | 
+
+        try {
+            Article result = apiInstance.post article(newArticle);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#post article");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-post article-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
+
+public class DefaultApiExample {
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        NewArticle newArticle = ; // NewArticle | 
+
+        try {
+            Article result = apiInstance.post article(newArticle);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#post article");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-post article-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-post article-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+
+// Create an instance of the API class
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+NewArticle *newArticle = ; // 
+
+[apiInstance post articleWith:newArticle
+              completionHandler: ^(Article output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-post article-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ArticlesApi = require('articles_api');
+
+// Create an instance of the API class
+var api = new ArticlesApi.DefaultApi()
+var newArticle = ; // {NewArticle} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.post article(newArticle, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-post article-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-post article-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class post articleExample
+    {
+        public void main()
+        {
+
+            // Create an instance of the API class
+            var apiInstance = new DefaultApi();
+            var newArticle = new NewArticle(); // NewArticle | 
+
+            try {
+                Article result = apiInstance.post article(newArticle);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling DefaultApi.post article: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-post article-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\DefaultApi();
+$newArticle = ; // NewArticle | 
+
+try {
+    $result = $api_instance->post article($newArticle);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->post article: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-post article-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::DefaultApi;
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
+my $newArticle = WWW::OPenAPIClient::Object::NewArticle->new(); # NewArticle | 
+
+eval {
+    my $result = $api_instance->post article(newArticle => $newArticle);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->post article: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-post article-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = openapi_client.DefaultApi()
+newArticle =  # NewArticle | 
+
+try:
+    api_response = api_instance.post_article(newArticle)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->post article: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-post article-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
+
+pub fn main() {
+    let newArticle = ; // NewArticle
+
+    let mut context = DefaultApi::Context::default();
+    let result = client.post article(newArticle, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">newArticle <span style="color:red;">*</span></td>
+<td>
+<p class="marked">Article to add to the store</p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "description" : "Article to add to the store",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/NewArticle"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_post article_newArticle');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_post article_newArticle"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Default-post article-title-200"></h3>
+                            <p id="examples-Default-post article-description-200" class="marked"></p>
+                            <script>
+                              var responseDefault200_description = `article response`;
+                              var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
+                              if (responseDefault200_description_break == -1) {
+                                $("#examples-Default-post article-title-200").text("Status: 200 - " + responseDefault200_description);
+                              } else {
+                                $("#examples-Default-post article-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
+                                $("#examples-Default-post article-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Default-post article-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Default-post article-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Default-post article-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-post article-200-schema">
+                                  <div id="responses-Default-post article-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "article response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Article"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Default-post article-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-post article-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Default-post article-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-Default-post article-title-default"></h3>
+                            <p id="examples-Default-post article-description-default" class="marked"></p>
+                            <script>
+                              var responseDefaultdefault_description = `unexpected error`;
+                              var responseDefaultdefault_description_break = responseDefaultdefault_description.indexOf('\n');
+                              if (responseDefaultdefault_description_break == -1) {
+                                $("#examples-Default-post article-title-default").text("Status: default - " + responseDefaultdefault_description);
+                              } else {
+                                $("#examples-Default-post article-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
+                                $("#examples-Default-post article-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Default-post article-default" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Default-post article-default-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Default-post article-default-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-post article-default-schema">
+                                  <div id="responses-Default-post article-schema-default" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "unexpected error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/Error"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Default-post article-default-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-post article-schema-default');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Default-post article-default-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
                         </article>
