@@ -3,13 +3,9 @@ deps:
 	# npm install @openapitools/openapi-generator-cli # <-- needs Java unfortunately
 
 generate:
-	oapi-codegen -generate server,spec -package article api/article.yaml > article/server.gen.go
-	oapi-codegen -generate types -package article api/article.yaml > article/types.gen.go
-	oapi-codegen -generate client -package article api/article.yaml > article/client.gen.go
-
-	oapi-codegen -generate server,spec -package feed api/feed.yaml > feed/server.gen.go
-	oapi-codegen -generate types -package feed api/feed.yaml > feed/types.gen.go
-	oapi-codegen -generate client -package feed api/feed.yaml > feed/client.gen.go
+	oapi-codegen -generate server,spec -package model api/openapi.yaml > model/server.gen.go
+	oapi-codegen -generate types -package model api/openapi.yaml > model/types.gen.go
+	oapi-codegen -generate client -package model api/openapi.yaml > model/client.gen.go
 
 generate-docs:
 	openapi-generator generate -i api/article.yaml -g html2 -o docs/article/
