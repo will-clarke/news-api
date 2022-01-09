@@ -38,7 +38,7 @@ type FeedAllOf struct {
 // NewArticle defines model for NewArticle.
 type NewArticle struct {
 	Categories    *[]string `json:"categories,omitempty"`
-	Feed          *string   `json:"feed,omitempty"`
+	FeedId        int64     `json:"feedId"`
 	PublishedDate *string   `json:"publishedDate,omitempty"`
 	Url           string    `json:"url"`
 }
@@ -52,7 +52,7 @@ type NewFeed struct {
 // GetArticlesParams defines parameters for GetArticles.
 type GetArticlesParams struct {
 	// feeds to filter by
-	Feeds *[]string `json:"feeds,omitempty"`
+	FeedIDs *[]int64 `json:"feedIDs,omitempty"`
 
 	// categories to filter by
 	Categories *[]string `json:"categories,omitempty"`

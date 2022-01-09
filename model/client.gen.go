@@ -230,9 +230,9 @@ func NewGetArticlesRequest(server string, params *GetArticlesParams) (*http.Requ
 
 	queryValues := queryURL.Query()
 
-	if params.Feeds != nil {
+	if params.FeedIDs != nil {
 
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "feeds", runtime.ParamLocationQuery, *params.Feeds); err != nil {
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "feedIDs", runtime.ParamLocationQuery, *params.FeedIDs); err != nil {
 			return nil, err
 		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 			return nil, err

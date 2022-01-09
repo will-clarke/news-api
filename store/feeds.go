@@ -3,6 +3,7 @@ package store
 import (
 	"net/http"
 
+	"git.sr.ht/~will-clarke/news-api/importer"
 	"git.sr.ht/~will-clarke/news-api/model"
 	"github.com/labstack/echo/v4"
 )
@@ -22,9 +23,6 @@ func (s *Store) GetFeeds(ctx echo.Context) error {
 
 // (POST /Feeds)
 func (s *Store) PostFeed(ctx echo.Context) error {
-	s.lock.Lock()
-	defer s.lock.Unlock()
-
 	var newFeed model.NewFeed
 	err := ctx.Bind(&newFeed)
 	if err != nil {
@@ -36,6 +34,15 @@ func (s *Store) PostFeed(ctx echo.Context) error {
 		return err
 	}
 
+	f := importer.Import(newFeed, s)
+
+	return ctx.JSON(http.StatusCreated, f)
+}
+
+func (s *Store) StoreFeed(newFeed model.NewFeed) model.Feed {
+	s.lock.Lock()
+	defer s.lock.Unlock()
+
 	f := model.Feed{}
 	f.Url = newFeed.Url
 	f.Categories = newFeed.Categories
@@ -44,6 +51,5 @@ func (s *Store) PostFeed(ctx echo.Context) error {
 	s.nextFeedID += 1
 
 	s.feeds[f.Id] = f
-
-	return ctx.JSON(http.StatusCreated, f)
+	return f
 }

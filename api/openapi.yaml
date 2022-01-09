@@ -60,11 +60,12 @@ paths:
       - description: feeds to filter by
         explode: true
         in: query
-        name: feeds
+        name: feedIDs
         required: false
         schema:
           items:
-            type: string
+            type: integer
+            format: int64
           type: array
         style: form
       - description: categories to filter by
@@ -214,12 +215,14 @@ components:
           items:
             type: string
           type: array
-        feed:
-          type: string
+        feedId:
+          format: int64
+          type: integer
         publishedDate:
           type: string
       required:
       - url
+      - feedId
       type: object
     Article_allOf:
       properties:

@@ -16,7 +16,7 @@ func (s *Store) GetArticles(ctx echo.Context, params model.GetArticlesParams) er
 
 	articles := []model.Article{}
 
-	if params.Categories == nil && params.Feeds == nil {
+	if params.Categories == nil && params.FeedIDs == nil {
 		// no filtering so I'm guessing we should just return EVERYTHING now, performance be damned.
 		// We can add pagination later if we want.
 		for _, art := range s.articles {
@@ -25,10 +25,10 @@ func (s *Store) GetArticles(ctx echo.Context, params model.GetArticlesParams) er
 		return ctx.JSON(http.StatusOK, articles)
 	}
 
-	feedParams := []string{}
+	feedIDParams := []int64{}
 	categoryParams := []string{}
-	if params.Feeds != nil {
-		feedParams = *params.Feeds
+	if params.FeedIDs != nil {
+		feedIDParams = *params.FeedIDs
 	}
 	if params.Categories != nil {
 		categoryParams = *params.Categories
@@ -37,12 +37,10 @@ func (s *Store) GetArticles(ctx echo.Context, params model.GetArticlesParams) er
 	// starting a horrific for loop.. hang on!!!
 NEXTARTICLE:
 	for _, art := range s.articles {
-		if art.Feed != nil {
-			for _, feedParam := range feedParams {
-				if feedParam == *art.Feed {
-					articles = append(articles, art)
-					continue NEXTARTICLE
-				}
+		for _, feedParam := range feedIDParams {
+			if feedParam == art.FeedId {
+				articles = append(articles, art)
+				continue NEXTARTICLE
 			}
 		}
 		if categoryParams == nil || art.Categories == nil {
@@ -63,18 +61,24 @@ NEXTARTICLE:
 
 // (POST /articles)
 func (s *Store) PostArticle(ctx echo.Context) error {
-	s.lock.Lock()
-	defer s.lock.Unlock()
-
 	var newArticle model.NewArticle
 	err := ctx.Bind(&newArticle)
 	if err != nil {
 		return sendArticleStoreError(ctx, http.StatusBadRequest, "Invalid format for NewPet")
 	}
 
+	art := s.StoreArticle(newArticle)
+
+	return ctx.JSON(http.StatusCreated, art)
+}
+
+func (s *Store) StoreArticle(newArticle model.NewArticle) model.Article {
+	s.lock.Lock()
+	defer s.lock.Unlock()
+
 	art := model.Article{}
 	art.Categories = newArticle.Categories
-	art.Feed = newArticle.Feed
+	art.FeedId = newArticle.FeedId
 	art.PublishedDate = newArticle.PublishedDate
 	art.Url = newArticle.Url
 	art.Id = s.nextArticleID
@@ -82,8 +86,7 @@ func (s *Store) PostArticle(ctx echo.Context) error {
 	s.nextArticleID += 1
 
 	s.articles[art.Id] = art
-
-	return ctx.JSON(http.StatusCreated, art)
+	return art
 }
 
 // (DELETE /articles/{id})

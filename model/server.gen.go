@@ -51,11 +51,11 @@ func (w *ServerInterfaceWrapper) GetArticles(ctx echo.Context) error {
 
 	// Parameter object where we will unmarshal all parameters from the context
 	var params GetArticlesParams
-	// ------------- Optional query parameter "feeds" -------------
+	// ------------- Optional query parameter "feedIDs" -------------
 
-	err = runtime.BindQueryParameter("form", true, false, "feeds", ctx.QueryParams(), &params.Feeds)
+	err = runtime.BindQueryParameter("form", true, false, "feedIDs", ctx.QueryParams(), &params.FeedIDs)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter feeds: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter feedIDs: %s", err))
 	}
 
 	// ------------- Optional query parameter "categories" -------------
@@ -169,23 +169,23 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
+	"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",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
