@@ -181,6 +181,8 @@ components:
       properties:
         url:
           type: string
+        title:
+          type: string
         categories:
           items:
             type: string

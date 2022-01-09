@@ -8,6 +8,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var exampleTitle = "an example title"
+
 func TestStore_StoreFeed(t *testing.T) {
 	tests := []struct {
 		name    string
@@ -27,10 +29,10 @@ func TestStore_StoreFeed(t *testing.T) {
 				NewFeed: model.NewFeed{Url: "https://example.com"}},
 		},
 		{
-			name:    "thrid feed has Id 3",
-			newFeed: model.NewFeed{Url: "https://example.com"},
+			name:    "thrid feed has Id 3 and persists the title",
+			newFeed: model.NewFeed{Url: "https://example.com", Title: &exampleTitle},
 			want: model.Feed{FeedAllOf: model.FeedAllOf{Id: 3},
-				NewFeed: model.NewFeed{Url: "https://example.com"}},
+				NewFeed: model.NewFeed{Url: "https://example.com", Title: &exampleTitle}},
 		},
 	}
 	s := store.NewStore()

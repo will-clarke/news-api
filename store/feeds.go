@@ -56,6 +56,7 @@ func (s *Store) StoreFeed(newFeed model.NewFeed) model.Feed {
 
 	f := model.Feed{}
 	f.Url = newFeed.Url
+	f.Title = newFeed.Title
 	f.Categories = newFeed.Categories
 	f.Id = s.nextFeedID
 

@@ -16,6 +16,9 @@ func Import(newFeed model.NewFeed, importer Importer) (model.Feed, error) {
 	if err != nil {
 		return model.Feed{}, err
 	}
+	if feed.Title != "" {
+		newFeed.Title = &feed.Title
+	}
 
 	// TODO: We need to think about error handling scenarios;
 	// do we want to add this feed if any of the items fail?

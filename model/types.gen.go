@@ -47,6 +47,7 @@ type NewArticle struct {
 // NewFeed defines model for NewFeed.
 type NewFeed struct {
 	Categories *[]string `json:"categories,omitempty"`
+	Title      *string   `json:"title,omitempty"`
 	Url        string    `json:"url"`
 }
 
