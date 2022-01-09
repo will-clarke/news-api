@@ -40,6 +40,7 @@ type NewArticle struct {
 	Categories    *[]string `json:"categories,omitempty"`
 	FeedId        int64     `json:"feedId"`
 	PublishedDate *string   `json:"publishedDate,omitempty"`
+	Title         string    `json:"title"`
 	Url           string    `json:"url"`
 }
 

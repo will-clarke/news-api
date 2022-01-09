@@ -34,7 +34,18 @@ func (s *Store) PostFeed(ctx echo.Context) error {
 		return err
 	}
 
-	f := importer.Import(newFeed, s)
+	f, err := importer.Import(newFeed, s)
+	if err != nil {
+		FeedErr := model.Error{
+			// TODO: is there a better status code that 500 here?
+			// could legit be server error.. but also a dud feed.
+			// Or HTTP not working
+			Code:    int32(http.StatusInternalServerError),
+			Message: "unable to process feed",
+		}
+		err := ctx.JSON(http.StatusInternalServerError, FeedErr)
+		return err
+	}
 
 	return ctx.JSON(http.StatusCreated, f)
 }

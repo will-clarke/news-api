@@ -81,6 +81,7 @@ func (s *Store) StoreArticle(newArticle model.NewArticle) model.Article {
 	art.FeedId = newArticle.FeedId
 	art.PublishedDate = newArticle.PublishedDate
 	art.Url = newArticle.Url
+	art.Title = newArticle.Title
 	art.Id = s.nextArticleID
 
 	s.nextArticleID += 1

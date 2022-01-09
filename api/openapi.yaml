@@ -211,6 +211,8 @@ components:
       properties:
         url:
           type: string
+        title:
+          type: string
         categories:
           items:
             type: string
@@ -222,6 +224,7 @@ components:
           type: string
       required:
       - url
+      - title
       - feedId
       type: object
     Article_allOf:
